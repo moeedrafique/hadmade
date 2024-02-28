@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat+Alternates:wght@100;400&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Oswald:wght@200;300;400;500&display=swap');:root{
+    --base-nav-footer-color: #030a17;
+}
+*{
+    margin:0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: Montserrat;
+}
+.position-relative{
+    z-index:300;
+    position:relative;
+}
+body{
+    background-color: #000000;
+    position: relative;
+    min-height:100vh;
+    color: #ffffff;
+}
+
+/* different pages backgrounds */
+.home-background{
+    background: url("https://res.cloudinary.com/dgzv7gan8/image/upload/v1691862517/daniela_handmade/backgrounds/woven-wool-cap-indigenous-culture-decoration-souvenir-generated-by-ai_dooncd.jpg");
+    opacity: 40%;
+}
+.bag-background{
+    background: url("https://res.cloudinary.com/dgzv7gan8/image/upload/v1691862517/daniela_handmade/backgrounds/vibrant-colors-animal-markings-feathers-generated-by-ai_xvimof.jpg");
+    opacity: 20%;
+}
+.products-background{
+    background: url("https://res.cloudinary.com/dgzv7gan8/image/upload/v1691862517/daniela_handmade/backgrounds/indigenous-pottery-workshop-creates-rustic-earthenware-bowls-generated-by-ai_qdemfz.jpg");
+    opacity: 10%;
+}
+.profile-background{
+    background: url("https://res.cloudinary.com/dgzv7gan8/image/upload/v1691862517/daniela_handmade/backgrounds/earthenware-pottery-collection-ornate-patterns-rustic-decoration-generated-by-ai_vqbow4.jpg");
+    opacity: 20%;
+}
+
+.auth-background{
+    background: url("https://res.cloudinary.com/dgzv7gan8/image/upload/v1691862518/daniela_handmade/backgrounds/vibrant-fashion-textile-pattern-collection-display-generative-ai_xk9tjj.jpg");
+    opacity: 20%;
+}
+.auth-block-content{
+    position: relative;
+}
+.background-overlay{
+    width:100vw;
+    height:100vh;
+    position: fixed;
+    z-index: -500;
+    top:0;
+    left:0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+i, p, a{
+    color:inherit;
+    font-family: Lato ;
+}
+
+.body-section{
+    padding: 12em 0;
+}
+
+.navbar {
+    background-color: var(--base-nav-footer-color);
+    color: #ffffff;
+    width:100%;
+    position: fixed;
+    font-family: "Montserrat" ;
+    z-index: 1500;
+}
+
+nav a{
+    text-decoration: none;
+    color: inherit;
+}
+.navbar-toggler{
+    color: white;
+}
+.navbar-brand{
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+#navbarSupportedContent{
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    height: 4em;
+    width: 100%;
+    background-color: var(--base-nav-footer-color);
+    z-index: 2500;
+}
+footer p{
+    text-align: center;
+}
+.social-link-div{
+    text-align: center;
+}
+
+/* Messages */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+/* buttons */
+.btn-green {
+    background: #3d9a66;
+    color: white;
+    font-weight: bold;
+}
+.btn-purple {
+    background: #DF4ED1;
+    color: white;
+}
+.btn-blue{
+    background: #5592a9;
+    color: white;
+}
+.btn-gate{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #10122b;
+}
+.btn-gate:focus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #10122b;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.increment-qty:focus, .decrement-qty:focus{
+    background-color: rgba(0,0,0,0);
+}
+/* widgets */
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0;
+    border-color: #dc3545;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 0;
+}
+
+.order-history{
+    color: white;
+}
+
+.message-container{
+    background-color: lightgreen;
+    color: darkgrey;
+}

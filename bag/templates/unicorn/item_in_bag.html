@@ -1,0 +1,90 @@
+<div class="row g-0  product-card">
+    {% if not deleted %}
+        {% if editing %}
+            <div class="col-12 col-md-5">
+                <div class="product-card-img-div" style="background-image:url('{{product_image_url}}')"></div>
+            </div>
+            <div id="editing-bag-item-div-{{item_index}}" class="col-12 col-md-7 editing-bag-item-div">
+                <div class="row g-0">
+                    <div class="col-4 label-edit-widget">
+                        <label for="colors">Color</label>
+                    </div>
+                    <div class="non-label-row-widget col-8" name="sizes">
+                        {% for color_instance in product.colors.all %}
+                            <button u:click="select_size_or_color('{{color_instance.name_EN}}', 'color')"
+                                    data-btn-info="{{color_instance.name_EN}}"
+                                    id="button-{{color_instance.name_EN}}-{{item_index}}"
+                                    class="color-size-button"
+                                    style="background-color:{{color_instance.hexcolor}};">
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+                <hr>
+                <div class="row g-0">
+                    <div class="col-4 label-edit-widget">
+                        <label for="sizes">Size</label>
+                    </div>
+                    <div class="non-label-row-widget col-8" name="sizes">
+                        {% for size_instance in product.sizes.all %}
+                            <button u:click.prevent="select_size_or_color('{{size_instance.size}}', 'size')"
+                                    data-btn-info="{{size_instance.size}}" id="button-{{size_instance.size}}-{{item_index}}"
+                                    class="color-size-button">
+                                {{size_instance.size}}
+                            </button>
+                        {% endfor %}
+                        <label for="sizes" class="label-edit-widget">
+                                <strong>
+                                    {{selected_size}}
+                                    {% for unit, value in size_units.items %}
+                                        {% if unit == selected_size %}
+                                            {{ value }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </strong>
+                            </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="quantity-bag-widget row g-0">
+                    <div class="label-edit-widget col-4"><label for="quantity">Quantity</label></div>
+                    <div class="non-label-col-widget col-8">
+                        <button class="increment-qty btn text-light" u:click.prevent="increment_component_quantity"><i class="fas fa-arrow-up"></i>
+                        </button>
+                        <input class="col-4 col-md-4" type="number" readonly
+                            name="quantity" value="{{component_quantity}}" min="1" max="99">
+                        <button class="decrement-qty btn text-light" u:click.prevent="decrement_component_quantity"><i class="fas fa-arrow-down"></i>
+                        </button>
+                    </div>
+                </div>
+                <button id="adjust-bag-btn-{{ product.id }}" class="adjust-bag-btn form-control" u:click.prevent="adjust_bag" onclick="updateBagstatus()"> Adjust </button>
+            </div>
+        {% elif soft_deleted %}
+            <div class="col-12 col-md-5">
+                <div class="product-card-img-div" style="background-image:url('{{product_image_url}}')"></div>
+            </div>
+            <div class="col-12 col-md-7 bag-item-soft-deleted">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Quantity: {{ component_quantity }}</p>
+                <p>Price: PKR {{ item.product.price }}</p>
+                <button u:click.prevent="remove_bag_item" onclick="updateBagstatus()" class="btn btn-danger form-control"><i class="fas fa-trash"></i> permanently delete </button>
+                <button u:click.prevent="add_item_back" class="btn btn-secondary form-control"><i class="fas fa-arrow-left"> </i> Add back</button>
+
+            </div>
+        {% else %}
+            <div class="col-12 col-md-5">
+                <div class="product-card-img-div" style="background-image:url('{{product_image_url}}')"></div>
+            </div>
+            <div id="bag-item-data-div-{{item_index}}" class="col-12 col-md-7 bag-item-data-div">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Quantity: {{ component_quantity }}</p>
+                <p>Price: PKR {{ item.product.price }}</p>
+                <button u:click.prevent="editing_product" class="btn form-control text-success"><i class="fas fa-edit"></i> Edit </button>
+                <button u:click.prevent="soft_removal_from_bag" class="btn form-control text-danger"><i class="fas fa-trash"></i> Remove </button>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+

@@ -1,0 +1,16 @@
+<menu>
+    <li class="list-inline-item">
+            <div class="text-center">
+                <p class="font-weight-bold">
+                    <i class="fas fa-shopping-cart">&nbsp</i>
+                    {% if total %}
+                    ${{ total|floatformat:2 }}
+                    {% else %}
+                    $0.00
+                    {% endif %}
+                </p>
+                <a href="{% url 'bag' %}" class="btn btn-blue">View Bag</a>
+            </div>
+    </li>
+</menu>
+

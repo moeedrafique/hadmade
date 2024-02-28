@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load unicorn %}
+
+{% block extra_head %}
+    <meta name="description" content="Bag page of Daniela-Handmade Project">
+{% endblock %}
+{% block content %}
+<div class="bag-background background-overlay"></div>
+<div class="container bag-body">
+    {% if messages %}
+        {% for message in messages %}
+            <p> {{message}} </p>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="col-7 col-md-6">
+            <h1 class="display-4">
+                Your cart
+            </h1>
+        </div>
+    </div>
+    <hr>
+    <hr>
+    {% for item in bag_items %}
+        {% unicorn 'item_in_bag' item=item item_index=forloop.counter0 product=item.product size_units=size_units key=forloop.counter0%}
+    {% endfor %}
+   <a class="btn btn-gate form-control" href="{% url 'checkout' %}">Checkout</a>
+</div>
+{% endblock %}

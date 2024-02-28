@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        h1, h2, h3, p {
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Order Confirmation</h1>
+        <p>Dear {{ order.full_name }},</p>
+        <p>We are pleased to inform you that your order has been successfully processed.</p>
+
+        <h2>Order Details:</h2>
+        <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+        <p><strong>Date:</strong> {{ order.date }}</p>
+        <h3>Items:</h3>
+        <ul>
+             {% for item in order_line_items %}
+                <li>{{ item.product.name }} - {{ item.quantity }} x ${{ item.lineitem_total }}</li>
+             {% endfor %}
+        </ul>
+
+        <p><strong>Total:</strong> ${{ order.grand_total }}</p>
+
+        <h2>Shipping Information:</h2>
+        <p><strong>Name:</strong> {{ order.full_name }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p><strong>Address:</strong> {{ order.address1 }}</p>
+        <p><strong>City:</strong> {{ order.town_or_city }}</p>
+        <p><strong>Country:</strong> {{ order.country }}</p>
+        <p><strong>Postal Code:</strong> {{ order.postcode }}</p>
+
+        <p>Thank you for choosing Trio's Artistic Adornments. We look forward to serving you again!</p>
+    </div>
+    <div class="footer">
+        <p>Sincerely,<br>Trio's Artistic Adornments Team</p>
+    </div>
+</body>
+</html>
